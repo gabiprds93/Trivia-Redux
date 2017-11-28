@@ -58,9 +58,9 @@ const initialState =
     questions: QUESTIONS,
     total: 5,
     arrayAnswers: new Array(this.total),
-    contador: 0,
-    incorrectas: [],
-    titulo: "Aqui estan tus respuestas:",
+    count: 0,
+    incorrect: [],
+    title: "Aqui estan tus respuestas:",
     
 };
 

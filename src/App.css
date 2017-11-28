@@ -21,7 +21,7 @@ body
 {
     visibility: hidden;
 }
-#secImagen
+#secImage
 {
     margin: 10px;
 }
@@ -29,11 +29,11 @@ body
 {
     background-color: #7a7a7a !important;
 }
-#opcion1, #opcion2, #opcion3
+#option1, #option2, #option3
 {
     font-size: 20px;
 }
-.opciones
+.options
 {
     margin-bottom: 20px;
 }
@@ -41,7 +41,7 @@ body
 {
     opacity: 0.5;
 }
-#fondo
+#background
 {
     position: fixed;
     bottom: 0;

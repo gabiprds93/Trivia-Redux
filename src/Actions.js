@@ -1,28 +1,19 @@
 import store from "./Store";
 
-const nxt = () => {
-    let contador = store.getState().contador;
-    let total = store.getState().total;
-    if(contador >= 0 && contador <= total - 1)
-    {
-        store.setState({
-            contador: contador + 1,
-        })
-    }
-}
-
-export const addAnswer = (answer) => {
-    let contador = store.getState().contador;
+export const addAnswer = (answer) => 
+{
+    let count = store.getState().count;
     let oldList = store.getState().arrayAnswers;
-    console.log("oldlist", oldList);
-    oldList[contador] = answer
+    oldList[count] = answer;
     const newList = oldList;
     store.setState({
         arrayAnswers: newList
-    })
-    nxt();
+    });
+    next();
 }
-export const anterior = (answer) => {
+
+export const previous = (answer) => 
+{
     
     const addAnswerList = [...store.getState().arrayAnswers, [
         answer = answer,
@@ -32,56 +23,56 @@ export const anterior = (answer) => {
         arrayAnswers: addAnswerList
     })
 }
-export const siguiente = () => {
-    let contador = store.getState().contador;
+
+export const next = () => 
+{
+    let count = store.getState().count;
     let total = store.getState().total;
-    if(contador >= 0 && contador <= total - 1)
+    if(count >= 0 && count <= total - 1)
     {
         store.setState({
-            contador: contador + 1,
+            count: count + 1,
         })
     }
 }
-let contCorrectas = 0;
-export const comprobar = (answer) => {
+
+let countCorrect = 0;
+export const check = (answer) => 
+{
     let questions = store.getState().questions;
     let arrayAnswers = store.getState().arrayAnswers;
-    let cont = 0;
-    console.log("entro comprbar")
-    let incorrectas = store.getState().incorrectas;
-    let titulo = store.getState().titulo;
+    let incorrect = store.getState().incorrect;
+    let title = store.getState().title;
     let total = store.getState().total;
+    let cont = 0;    
     
     for(let i = 0; i < total; i++)
     {
-          if(arrayAnswers[cont] == questions[i].answer)
-          {
-                contCorrectas++;
-                console.log("contCorrectas", contCorrectas)
-          }
-          else
-          {
-            incorrectas.push(cont);  
-            console.log("incorrectas", incorrectas)
-          }
-          cont++;
+        if(arrayAnswers[cont] == questions[i].answer)
+        {
+            countCorrect++;
+        }
+        else
+        {
+            incorrect.push(cont);  
+        }
+        cont++;
     }
-    titulo = `${contCorrectas} de ${total} correctas!`;    
+    title = `${countCorrect} de ${total} correctas!`;    
     store.setState({
-        incorrectas: incorrectas,
-        titulo: titulo,
-    })
+        incorrect: incorrect,
+        title: title,
+    });
 }
-export const reiniciar = (answer) => {
-    
+
+export const restart = (answer) => 
+{
     let total = store.getState().total;
-    
-    contCorrectas = 0;
-    
+    countCorrect = 0;
     store.setState({
-        arregloRespuestas: new Array(total),
-        contador: 0,
-        titulo: "Aqui estan tus respuestas:",
-        incorrectas: [],
-    })
+        arrayAnswers: new Array(total),
+        count: 0,
+        title: "Aqui estan tus respuestas:",
+        incorrect: [],
+    });
 }
